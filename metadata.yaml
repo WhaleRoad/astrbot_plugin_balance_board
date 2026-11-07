@@ -10,7 +10,7 @@ desc: |
   自建站 / 中转站这类域名认不出来的，可以在页面「手动查一家」里选接口类型并填地址和 key。
   余额低于阈值时先递给她，由她用自己的话说一句，只说一次，充值回到线以上才复位。
 version: 0.4.0
-author: 大肥鱼
+author: 洛汐
 repo: https://github.com/WhaleRoad/astrbot_plugin_balance_board
 views:
   - balance
