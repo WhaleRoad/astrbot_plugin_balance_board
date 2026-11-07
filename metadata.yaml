@@ -1,0 +1,16 @@
+name: astrbot_plugin_balance_board
+display_name: 余额面板
+short_desc: 按接口地址认出各家的余额接口，key 复用 AstrBot 已配好的
+desc: |
+  先认模型，再问钱。
+  挂了哪几家、各用什么地址，直接从 AstrBot 的 provider 配置里读；
+  key 也直接复用已经配好的那把，不用在插件里再填一遍。
+  按 api_base 的域名自动认厂商：DeepSeek / 硅基流动 / Kimi 三家官方余额接口
+  定时拉一次；本地模型、没公开余额接口的就老老实实标注「这家没接口」。
+  自建站 / 中转站这类域名认不出来的，可以在页面「手动查一家」里选接口类型并填地址和 key。
+  余额低于阈值时先递给她，由她用自己的话说一句，只说一次，充值回到线以上才复位。
+version: 0.4.0
+author: 大肥鱼
+repo: https://github.com/WhaleRoad/astrbot_plugin_balance_board
+views:
+  - balance

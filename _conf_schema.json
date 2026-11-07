@@ -1,0 +1,62 @@
+{
+  "refresh_minutes": {
+    "description": "隔多久拉一次余额",
+    "type": "int",
+    "hint": "单位分钟，可填 1–720，默认 10。也可在插件页面「提醒设置」里改，保存后立刻按新间隔跑，不用重启。",
+    "default": 10
+  },
+  "low_balance": {
+    "description": "低余额提醒阈值",
+    "type": "float",
+    "hint": "余额低于这个数时，可选地由当前人设生成一句提醒，只说一次；充值回到线以上才复位。按账户自己的币种直接比，不做汇率换算。填 0 表示不提醒。默认 2.0。",
+    "default": 2.0
+  },
+  "alert_cooldown_hours": {
+    "description": "重复提醒间隔（0 = 只发一次）",
+    "type": "int",
+    "hint": "余额低于提醒线时只推一条，充值回到线以上才复位。填 0（默认）就是只发一次、绝不重复；填大于 0 的数才会按这个小时数重复提醒。单位小时。",
+    "default": 0
+  },
+  "notify_session": {
+    "description": "提醒发到哪个会话",
+    "type": "string",
+    "hint": "填 unified_msg_origin，格式 平台:消息类型:会话号（用冒号，不是下划线）。留空就发给最后一次说话的那个会话。也可在插件页面「提醒设置」里填。",
+    "default": ""
+  },
+  "show_unsupported": {
+    "description": "没接口的服务商也显示",
+    "type": "bool",
+    "hint": "开启后列表里会标出「这家没有余额接口」，关掉就只显示查得到的。",
+    "default": true
+  },
+  "default_platform": {
+    "description": "只填号码时补全用的平台名",
+    "type": "string",
+    "hint": "例如 napcat、aiocqhttp。留空时「提醒会话」必须填完整的 平台:消息类型:会话号；填了之后只写号码也能用。插件不预设任何平台。",
+    "default": ""
+  },
+  "bot_name_prefixes": {
+    "description": "生成提醒时要剥掉的机器人名字",
+    "type": "string",
+    "hint": "模型有时会在话前面加上自己的名字，例如「小助手：」。把名字填这里（多个用逗号分隔），插件会去掉这个前缀。留空就只剥通用的「回复/回答/输出」。",
+    "default": ""
+  },
+  "allow_open_browser": {
+    "description": "允许在桌面打开官方充值页",
+    "type": "bool",
+    "hint": "默认开启。WebUI 把插件页放在 sandbox iframe 里，页面自己开不了新窗口，所以点「去充值」由后端进程唤起本机默认浏览器；地址只从内置官方白名单取。不想要这个副作用就设为 false，页面会改为给出可复制的地址。",
+    "default": true
+  },
+  "persist_manual_key": {
+    "description": "记住页面手填的 API Key",
+    "type": "bool",
+    "hint": "默认开启：手填的 key 用本机随机密钥加密后存进 state.json，插件重启/重载时自动恢复，不用重填；页面和接口永远只返回末四位掩码，不返回明文或密文。密钥单独存在 .keyring 文件里（已被 .gitignore 排除）。设为 false 则明文只在内存里，重启后要重填一次。",
+    "default": true
+  },
+  "persona_fallback": {
+    "description": "拿不到人设时读框架数据库兜底",
+    "type": "bool",
+    "hint": "这条降级路径直读 AstrBot 的 data_v4.db 内部表结构，框架升级后可能失效。默认开启；不需要「机器人自己开口提醒」时可以整个关掉，只保留面板与命令。",
+    "default": true
+  }
+}
